@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置常量 -->
+	<!-- 字符集 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 主题 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 扩展名 ，请求的扩展名，要是多个中间已','分割 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- 动态方法访问 -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant> -->
+	<!-- 上传文件大小最大4M -->
+	<constant name="struts.multipart.maxSize" value="4194304"></constant>
+
+
+	<!-- 通用package -->
+	<package name="common" namespace="/" extends="struts-default">
+		<!-- 全局result -->
+		<global-results>
+			<!-- ********************** -->
+			<!-- 需要做全局result -->
+			<result name="success"></result>
+			<result name="error"></result>
+		</global-results>
+
+	</package>
+
+</struts>

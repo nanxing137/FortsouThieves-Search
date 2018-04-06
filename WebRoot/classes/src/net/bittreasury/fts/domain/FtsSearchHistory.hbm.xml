@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 2018-4-1 21:37:58 by Hibernate Tools 5.2.8.Final -->
+<hibernate-mapping>
+
+	<class name="src.net.bittreasury.fts.domain.FtsSearchHistory" table="fts_search_history"
+		catalog="fortyThieves" optimistic-lock="version">
+
+		<id name="id" type="java.lang.Integer">
+
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+
+
+
+
+		<property name="keyword" type="string">
+			<column name="keyword" not-null="true">
+				<comment>�����ؼ���</comment>
+			</column>
+		</property>
+
+		<property name="searchTimes" type="int">
+			<column name="search_times" not-null="true">
+				<comment>��������</comment>
+			</column>
+		</property>
+
+
+	</class>
+
+</hibernate-mapping>

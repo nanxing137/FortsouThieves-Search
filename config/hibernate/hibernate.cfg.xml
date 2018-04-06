@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 配置会话工厂所需要的属性 -->
+	<session-factory>
+		<!-- 配置hibernate运行的参数 数据库方言，根据数据库选择 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!--为了方便调试是否在运行hibernate时在日志中输出sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 是否对日志中输出的sql语句进行格式化 -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- hbm2ddl.auto的4个值，如果不需要设置为none，建议正式环境设置为none validate 加载hibernate时，验证创建数据库表结构 
+			create 每次加载hibernate，重新创建数据库表结构，这就是导致数据库表数据丢失的原因 。 create-drop 加载hibernate时创建，退出是删除表结构 
+			update 加载hibernate自动更新数据库结构 none 不执行检查 -->
+		<property name="hibernate.hbm2ddl.auto">none</property>
+		<!-- 使用spring与hibernate整合类SpringSessionContext，由spring管理session，如果进行事务控制，spring将session和线程绑定 
+			,如果使用了sessionFactory，默认使用SpringSessionContext -->
+		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
+		<!-- 加载hbm.xml映射文件 -->
+		<mapping
+
+			resource="src/net/bittreasury/fts/domain/FtsCategories.hbm.xml" />
+		<mapping
+			resource="src/net/bittreasury/fts/domain/FtsResource.hbm.xml" />
+		<mapping
+			resource="src/net/bittreasury/fts/domain/FtsOriginalResource.hbm.xml" />
+		<mapping
+			resource="src/net/bittreasury/fts/domain/FtsSearchHistory.hbm.xml" />
+		<mapping
+			resource="src/net/bittreasury/fts/domain/FtsUsers.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 2018-4-1 21:37:58 by Hibernate Tools 5.2.8.Final -->
+<hibernate-mapping>
+
+	<class name="src.net.bittreasury.fts.domain.FtsCategories" table="fts_categories"
+		catalog="fortyThieves" optimistic-lock="version">
+
+		<id name="id" type="java.lang.Integer">
+
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+
+
+
+
+		<many-to-one name="ftsCategories" class="src.net.bittreasury.fts.domain.FtsCategories"
+
+			fetch="select">
+			<column name="fid" not-null="true">
+				<comment>����Դ����id</comment>
+			</column>
+		</many-to-one>
+		<property name="name" type="string">
+			<column name="name" not-null="true">
+				<comment>��Դ��������</comment>
+			</column>
+		</property>
+
+		<property name="locked" type="int">
+			<column name="locked" not-null="true">
+				<comment>��Ŀ�Ƿ�������0δ��1��</comment>
+			</column>
+		</property>
+
+
+		<set name="ftsCategorieses" table="fts_categories" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="fid" not-null="true">
+					<comment>����Դ����id</comment>
+				</column>
+			</key>
+			<one-to-many class="src.net.bittreasury.fts.domain.FtsCategories" />
+		</set>
+
+		<set name="ftsResources" table="fts_resource" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="category" not-null="true">
+					<comment>��Դ����</comment>
+				</column>
+			</key>
+			<one-to-many class="src.net.bittreasury.fts.domain.FtsResource" />
+		</set>
+
+		<set name="ftsOriginalResources" table="fts_original_resource"
+			inverse="true" lazy="true" fetch="select">
+			<key>
+				<column name="category" not-null="true">
+					<comment>��Դ����</comment>
+				</column>
+			</key>
+			<one-to-many class="src.net.bittreasury.fts.domain.FtsOriginalResource" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

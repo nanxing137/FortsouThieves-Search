@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 2018-4-1 21:37:58 by Hibernate Tools 5.2.8.Final -->
+<hibernate-mapping>
+
+	<class name="src.net.bittreasury.fts.domain.FtsOriginalResource" table="fts_original_resource"
+		catalog="fortyThieves" optimistic-lock="version">
+
+		<id name="id" type="java.lang.Integer">
+
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+
+
+
+
+		<many-to-one name="ftsCategories" class="src.net.bittreasury.fts.domain.FtsCategories"
+
+			fetch="select">
+			<column name="category" not-null="true">
+				<comment>��Դ����</comment>
+			</column>
+		</many-to-one>
+		<property name="name" type="string">
+			<column name="name" not-null="true">
+				<comment>��Դ����</comment>
+			</column>
+		</property>
+
+		<property name="description" type="string">
+			<column name="description" length="65535">
+				<comment>��Դ����</comment>
+			</column>
+		</property>
+
+		<property name="imageUrl" type="string">
+			<column name="image_url">
+				<comment>��Դ����ͼƬ��ַ</comment>
+			</column>
+		</property>
+
+		<property name="resourceUrl" type="string">
+			<column name="resource_url" length="65535" not-null="true">
+				<comment>��Դ���ص�ַ</comment>
+			</column>
+		</property>
+
+		<property name="insertTime" type="int">
+			<column name="insert_time" not-null="true">
+				<comment>unixʱ���</comment>
+			</column>
+		</property>
+
+		<property name="downloads" type="int">
+			<column name="downloads" not-null="true">
+				<comment>��Դ������</comment>
+			</column>
+		</property>
+
+		<property name="pageViews" type="int">
+			<column name="page_views" not-null="true">
+				<comment>��Դ����ҳ�����</comment>
+			</column>
+		</property>
+
+		<property name="locked" type="int">
+			<column name="locked" not-null="true">
+				<comment>��Ŀ�Ƿ�������0δ��1��</comment>
+			</column>
+		</property>
+
+
+	</class>
+
+</hibernate-mapping>

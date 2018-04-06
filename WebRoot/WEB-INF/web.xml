@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>fts</display-name>
+
+	<!-- 添加监听器，加载spring配置文件，创建spring实例，和servletContext绑定 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 如果不指定applicationContextLocation，默认加载/WEB-INF/applicationContext.xml -->
+	<!-- spring配置文件允许多个，半角逗号隔开即可 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext.xml,classpath:spring/applicationContext-*.xml</param-value>
+	</context-param>
+
+
+
+
+	<!-- 配置前端控制器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<!-- 方式1：具体路径，比如/add.action 不好 方式2：目录路径匹配，比如/customer/* 或者/*，将所有请求拦截。只有请求action时候进行处理 
+			方式3：扩展名匹配*.action或*.do -->
+
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
