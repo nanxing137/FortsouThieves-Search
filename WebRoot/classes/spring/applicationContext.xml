@@ -19,6 +19,10 @@
 	<context:property-placeholder
 		location="classpath:db.properties" />
 
+	<!-- 组件扫描 -->
+	<!-- 为了使用spring注解开发 -->
+	<context:component-scan base-package="src.net.bittreasury.fts"></context:component-scan>
+
 	<!-- 数据库连接池 -->
 	<bean name="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -38,7 +42,7 @@
 			value="classpath:hibernate/hibernate.cfg.xml"></property>
 	</bean>
 
-	<!-- 配置hibernateTemplate -->
+	<!-- 配置sessionFactory -->
 	<bean id="hibernateTemplate"
 		class="org.springframework.orm.hibernate5.HibernateTemplate">
 		<!-- 依赖属性 -->

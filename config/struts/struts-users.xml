@@ -13,15 +13,22 @@
 
 
 
-			<!-- ************** -->
 			<!-- 填写注册页面 -->
 			<result name="registeredUsers">
-
+				/jsp/login.jsp
 			</result>
 
 			<result name="submitUsers">
 				<!-- ******** -->
 				<!-- 这里返回注册成功页面 -->
+				/jsp/login.jsp
+			</result>
+
+			<result name="logIn">
+				/jsp/login.jsp
+			</result>
+			<result name="error">
+				/jsp/error.jsp
 			</result>
 
 		</action>

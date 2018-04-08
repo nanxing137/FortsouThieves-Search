@@ -21,28 +21,9 @@
 		<!-- 依赖sessionFactory -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<!-- 配置注解驱动 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!-- 事务控制增强 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<!-- 事务定义信息 -->
-		<tx:attributes>
-			<tx:method name="insert*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<!-- find查列表，get查单个 -->
-			<tx:method name="find*" propagation="REQUIRED"
-				read-only="true" />
-			<tx:method name="get*" propagation="REQUIRED"
-				read-only="true" />
-		</tx:attributes>
-	</tx:advice>
-
-	<!-- AOP配置 -->
-	<aop:config>
-		<!-- 切点位置，必须要找到对应的service，即目标对象 -->
-		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* src.net.bittreasury.fts.service.impl.*.*(..))" />
-	</aop:config>
-
+	
 
 </beans>

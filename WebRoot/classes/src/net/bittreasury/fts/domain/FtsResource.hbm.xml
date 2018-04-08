@@ -20,7 +20,7 @@
 
 		<many-to-one name="ftsCategories" class="src.net.bittreasury.fts.domain.FtsCategories"
 
-			fetch="select">
+			fetch="join">
 			<column name="category" not-null="true">
 				<comment>��Դ����</comment>
 			</column>

@@ -20,6 +20,22 @@
 
 	<!-- 通用package -->
 	<package name="common" namespace="/" extends="struts-default">
+
+		<interceptors>
+			<!-- 定义拦截器 -->
+			<interceptor name="userLoginInterceptor"
+				class="src.net.bittreasury.fts.web.interceptor.UserLoginInterceptor"></interceptor>
+
+			<interceptor-stack name="usersInterceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+
+			</interceptor-stack>
+
+		</interceptors>
+
+
+
+
 		<!-- 全局result -->
 		<global-results>
 			<!-- ********************** -->

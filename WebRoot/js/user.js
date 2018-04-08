@@ -109,6 +109,7 @@ function emailRegexp() {
     email.popover('show');
     return false;
   }
+  return true;
 }
 
 function passwordRegexp() {
@@ -137,7 +138,7 @@ function passwordResRegexp() {
 function loginCheck() {
   var name = $('#inputUsername');
   var password = $('#inputPassword');
-  var form = $('loginForm');
+  var form = $('#loginForm');
   if (name.val().length == 0) {
     name.attr('data-content', '用户名未填写');
     name.popover('show');
@@ -155,12 +156,13 @@ function registerCheck() {
   window.registerStatus.password = passwordRegexp();
   window.registerStatus.passwordRes = passwordResRegexp();
   var username = $('#inputRUsername').val();
-  var status = findUsername(
-    'http://localhost:3000', {
-      name: username
-    },
-    success
-  );
+  var status = true;
+//  var status = findUsername(
+//    'http://localhost:3000', {
+//      name: username
+//    },
+//    success
+//  );
   for (var i in window.registerStatus) {
     if (!window.registerStatus[i]) {
       status = false;
@@ -169,7 +171,8 @@ function registerCheck() {
   if (!status) {
     alert('输入有误，请检查后提交');
   } else {
-    $('registerForm').submit();
+	  console.log('submit');
+    $('#registerForm').submit();
   }
 }
 
@@ -193,15 +196,15 @@ $(function () {
 
   $('#inputRUsername').on('input', usernameRegexp);
 
-  $('#inputRUsername').blur(function () {
-    var username = $('#inputRUsername').val();
-    findUsername(
-      'http://localhost:3000', {
-        name: username
-      },
-      success
-    );
-  });
+//  $('#inputRUsername').blur(function () {
+//    var username = $('#inputRUsername').val();
+//    findUsername(
+//      'http://localhost:3000', {
+//        name: username
+//      },
+//      success
+//    );
+//  });
   $('.rgForm').blur(function () {
     var name = $(this).attr('id');
     window.registerRule[name]();

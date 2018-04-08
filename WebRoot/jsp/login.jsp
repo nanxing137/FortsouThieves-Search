@@ -64,14 +64,14 @@
       </div>
 
       <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 panel panel-default top-ma" id="login">
-        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="loginForm" action="">
+        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="loginForm" autocomplete="off" action="/fts/users/logIn.action">
           <div class="form-group form-group-lg">
             <label class="control-label" for="inputUsername">用户名</label>
-            <input type="text" class="form-control" id="inputUsername" data-toggle="popover" data-container="body" data-placement="right">
+            <input type="text" class="form-control" id="inputUsername" name="ftsUsers.userName" data-toggle="popover" data-container="body" data-placement="right">
           </div>
           <div class="form-group form-group-lg has-feedback">
             <label class="control-label" for="inputPassword">密码</label>
-            <input type="password" class="form-control" id="inputPassword" data-toggle="popover" data-container="body" data-placement="right">
+            <input type="password" class="form-control" id="inputPassword" name="ftsUsers.password" data-toggle="popover" data-container="body" data-placement="right">
             <span class="onit top-mii left glyphicon glyphicon-eye-close form-control-feedback" onclick="eye();" aria-hidden="true"></span>
           </div>
           <div class="row bottom">
@@ -83,18 +83,18 @@
       </div>
 
       <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 panel panel-default top-ma" id="register">
-        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="registerForm" action="/users/submitUsers.action">
+        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="registerForm" autocomplete="off" action="/fts/users/submitUsers.action">
           <div class="form-group form-group-lg">
             <label class="control-label" for="inputRUsername">用户名</label>
-            <input type="text" class="form-control rgForm" id="inputRUsername" data-toggle="popover" data-container="body" data-placement="right">
+            <input type="text" class="form-control rgForm" id="inputRUsername" name="ftsUsers.userName" data-toggle="popover" data-container="body" data-placement="right">
           </div>
           <div class="form-group form-group-lg">
             <label class="control-label" for="inputREmail">邮箱</label>
-            <input type="email" class="form-control rgForm" id="inputREmail" data-toggle="popover" data-container="body" data-placement="right">
+            <input type="email" class="form-control rgForm" id="inputREmail" name="ftsUsers.email" data-toggle="popover" data-container="body" data-placement="right">
           </div>
           <div class="form-group form-group-lg has-feedback">
             <label class="control-label" for="inputRPassword">密码</label>
-            <input type="password" class="form-control rgForm" id="inputRPassword" data-toggle="popover" data-container="body" data-placement="right">
+            <input type="password" class="form-control rgForm" id="inputRPassword" name="ftsUsers.password" data-toggle="popover" data-container="body" data-placement="right">
             <span class="onit top-mii left glyphicon glyphicon-eye-close form-control-feedback" onclick="eye('R');" aria-hidden="true"></span>
           </div>
           <div class="form-group form-group-lg has-feedback">
