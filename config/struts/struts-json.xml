@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<!--解决乱码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<package name="json" extends="common,json-default"
+		namespace="/json">
+
+		<!-- 当前使用spring和struts2整合方案 ，action由spring管理， class指定spring容 器中action的bean的id/name -->
+
+
+		<!-- 通配符方式 -->
+		<action name="*" class="usersJsonAction" method="{1}">
+
+			<!-- 失败跳转 -->
+			<result name="fail"></result>
+			<!-- 返回json类型数据 -->
+			<result name="json" type="json">
+				<!-- json是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->s
+				<!--填写返回的json，这里起名就叫json -->
+				<param name="root">json</param>
+			</result>
+
+
+		</action>
+
+
+
+
+	</package>
+
+
+</struts>

@@ -5,6 +5,6 @@
 <struts>
 	<include file="struts/struts-users.xml"></include>
 	<include file="struts/struts-common.xml"></include>
-	<!-- <include file="struts/struts-json.xml"></include> -->
+	<include file="struts/struts-json.xml"></include>
 	<include file="struts/struts-home.xml"></include>
 </struts>

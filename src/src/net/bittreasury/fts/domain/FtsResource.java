@@ -17,6 +17,7 @@ public class FtsResource implements java.io.Serializable {
 	private int downloads;
 	private int pageViews;
 	private int locked;
+	
 
 	public FtsResource() {
 	}
