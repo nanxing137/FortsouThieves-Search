@@ -28,4 +28,9 @@ public class ResourceServiceImpl implements ResourceService {
 		return resourceDao.sourceCount(ftsResource);
 	}
 
+	@Override
+	public FtsResource getResourceById(Integer id) {
+		return resourceDao.getResourceById(id);
+	}
+
 }

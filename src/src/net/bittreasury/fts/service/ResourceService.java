@@ -6,6 +6,9 @@ import src.net.bittreasury.fts.domain.FtsResource;
 import src.net.bittreasury.fts.domain.FtsUsers;
 
 public interface ResourceService {
-	public List<FtsResource> findResourcePage(FtsResource ftsResource ,Integer pageIndex,Integer pageSize);
+	public List<FtsResource> findResourcePage(FtsResource ftsResource, Integer pageIndex, Integer pageSize);
+
 	public Integer sourceCount(FtsResource ftsResource);
+
+	public FtsResource getResourceById(Integer id);
 }

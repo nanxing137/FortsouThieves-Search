@@ -13,7 +13,7 @@ public class ResourceJson {
 	private int downloads;
 	private int pageViews;
 	private int locked;
-	
+
 	public ResourceJson(FtsResource ftsResource) {
 		this.id = ftsResource.getId();
 		this.categoriesName = ftsResource.getFtsCategories().getName();
@@ -25,9 +25,9 @@ public class ResourceJson {
 		this.downloads = ftsResource.getDownloads();
 		this.pageViews = ftsResource.getPageViews();
 		this.locked = ftsResource.getLocked();
-		 
+
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
