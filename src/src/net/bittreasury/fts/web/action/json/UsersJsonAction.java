@@ -1,5 +1,6 @@
 package src.net.bittreasury.fts.web.action.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -76,8 +78,12 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		jsonVO.setFtsResource(ftsResource);
 		ResultVO resource = searchService.getResource(jsonVO.getFtsResource(), null, jsonVO.getPageIndex());
 		List<FtsResource> list = resource.getList();
+		List<ResourceJson> list2 = new ArrayList<>();
+		for (FtsResource ftsource : list) {
+			list2.add(new ResourceJson(ftsource));
+		}
 //		JSONObject jsonObject = JSONObject.fromObject(list);
-		JSONArray jsonArray = JSONArray.fromObject(list);
+		JSONArray jsonArray = JSONArray.fromObject(list2);
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
 

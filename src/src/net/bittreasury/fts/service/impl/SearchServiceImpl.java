@@ -117,14 +117,10 @@ public class SearchServiceImpl implements SearchService {
 			}
 
 			res.setId(Integer.parseInt(doc.get("fts_id").toString()));
-			res.setImageUrl(doc.get("fts_resource_url").toString());
-			res.setFtsCategories(new FtsCategories() {
-				{
-					FtsCategories ftsCategories = new FtsCategories();
-					ftsCategories.setName(doc.get("fts_category_name").toString());
-					super.setFtsCategories(ftsCategories);
-				}
-			});
+			res.setImageUrl(doc.get("fts_image_url").toString());
+			FtsCategories ftsCategories = new FtsCategories();
+			ftsCategories.setName(doc.get("fts_category_name").toString());
+			res.setFtsCategories(ftsCategories);
 			// 获取高亮信息
 
 			resources.add(res);
