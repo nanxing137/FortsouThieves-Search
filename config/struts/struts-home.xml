@@ -19,9 +19,9 @@
 			</result>
 		</action>
 		<action name="details" class="homeAction" method="details">
-			<resutl name="details">
+			<result name="details">
 				/jsp/details.jsp
-			</resutl>
+			</result>
 		</action>
 
 

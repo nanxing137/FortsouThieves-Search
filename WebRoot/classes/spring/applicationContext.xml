@@ -48,4 +48,12 @@
 		<!-- 依赖属性 -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	<!-- 配置solr服务 -->
+	<bean class="org.apache.solr.client.solrj.impl.HttpSolrClient" id="httpSolrClient">
+		<constructor-arg  value="http://localhost:8080/solr/fts_core" ></constructor-arg>
+	</bean>
+	
+	
+	
 </beans>

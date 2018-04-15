@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 import net.sf.json.util.CycleDetectionStrategy;
@@ -22,8 +23,8 @@ import src.net.bittreasury.fts.domain.FtsCategories;
 import src.net.bittreasury.fts.domain.FtsResource;
 import src.net.bittreasury.fts.domain.FtsUsers;
 import src.net.bittreasury.fts.pojo.*;
-import src.net.bittreasury.fts.pojo.UsersVO;
 import src.net.bittreasury.fts.service.ResourceService;
+import src.net.bittreasury.fts.service.SearchService;
 import src.net.bittreasury.fts.service.UsersService;
 
 @Controller("usersJsonAction")
@@ -31,6 +32,10 @@ import src.net.bittreasury.fts.service.UsersService;
 public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO> {
 
 	private JsonVO jsonVO = new JsonVO();
+
+	// solr查询
+	@Autowired
+	private SearchService searchService;
 
 	// 使用json判断用户名是否合法
 	@Autowired
@@ -58,6 +63,46 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		return "json";
 	}
 
+	/**
+	 * 这时候使用solr的高级搜索
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String searchJson() throws Exception {
+		FtsResource ftsResource = new FtsResource();
+		//ftsResource.setName("片");
+		
+		jsonVO.setFtsResource(ftsResource);
+		ResultVO resource = searchService.getResource(jsonVO.getFtsResource(), null, jsonVO.getPageIndex());
+		List<FtsResource> list = resource.getList();
+//		JSONObject jsonObject = JSONObject.fromObject(list);
+		JSONArray jsonArray = JSONArray.fromObject(list);
+		jsonVO.setJson(jsonArray.toString());
+		return "json";
+
+	}
+	/**
+	 * 测试用的简单搜索
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String searchJsonE() throws Exception {
+		
+		List<FtsResource> list = searchService.searchEasy("片");
+		JSONArray jsonArray = JSONArray.fromObject(list);
+		//JSONObject jsonObject = JSONObject.fromObject(list);
+		jsonVO.setJson(jsonArray.toString());
+		return "json";
+		
+	}
+
+	/**
+	 * 普通搜索 暂时不用了
+	 * 
+	 * @return
+	 */
 	public String list() {
 		List<FtsResource> list = resourceService.findResourcePage(jsonVO.getFtsResource(), jsonVO.getPageIndex(),
 				jsonVO.getPageSize());
@@ -65,15 +110,14 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		for (FtsResource ftsresource : list) {
 			jsonList.add(new ResourceJson(ftsresource));
 		}
-		
-		
+
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", jsonList);
 
 		JsonConfig jsonConfig = new JsonConfig();
 
 		// jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
-		//jsonConfig.setExcludes(new String[] { "ftsCategories" });
+		// jsonConfig.setExcludes(new String[] { "ftsCategories" });
 
 		JSONObject jsonObject = JSONObject.fromObject(map, jsonConfig);
 		jsonVO.setJson(jsonObject.toString());
@@ -84,7 +128,5 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 	public JsonVO getModel() {
 		return jsonVO;
 	}
-
-	
 
 }
