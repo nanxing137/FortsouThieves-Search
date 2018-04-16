@@ -1,5 +1,6 @@
 package src.net.bittreasury.fts.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,17 @@ public class ResourceDaoImpl extends HibernateDaoSupport implements ResourceDao 
 	public FtsResource getResourceById(Integer id) {
 		FtsResource ftsResource = this.getHibernateTemplate().get(FtsResource.class, id);
 		return ftsResource;
+	}
+
+	@Override
+	public List<String> fingResourceList() {
+		List<FtsResource> list = (List<FtsResource>) this.getHibernateTemplate().find("from FtsResource");
+		List<String> result =new ArrayList<>();
+		for (FtsResource ftsResource : list) {
+			result.add(ftsResource.getName());
+		}
+		
+		return result;
 	}
 
 }

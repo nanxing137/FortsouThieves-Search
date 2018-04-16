@@ -11,4 +11,6 @@ public interface ResourceService {
 	public Integer sourceCount(FtsResource ftsResource);
 
 	public FtsResource getResourceById(Integer id);
+	
+	public List<String> fingResourceList();
 }

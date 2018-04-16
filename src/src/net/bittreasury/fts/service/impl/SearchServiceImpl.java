@@ -60,7 +60,7 @@ public class SearchServiceImpl implements SearchService {
 		// 输入关键字
 
 		if (null != ftsResource && StringUtils.isNotEmpty(ftsResource.getName())) {
-			solrQuery.setQuery("fts_name:" + ftsResource.getName() + "OR fts_description:" + ftsResource.getName());
+			solrQuery.setQuery("fts_name:" + ftsResource.getName() + " OR fts_description:" + ftsResource.getName());
 		} else {
 			solrQuery.setQuery("*:*");
 		}
@@ -101,15 +101,15 @@ public class SearchServiceImpl implements SearchService {
 		for (SolrDocument doc : results) {
 			res = new FtsResource();
 
-			// List<String> list = highlighting.get(doc.get("id")).get("fts_description");
-			List<String> list = null;
+			List<String> list = highlighting.get(doc.get("id")).get("fts_description");
+			// List<String> list = null;
 			if (null != list) {
 				res.setDescription(list.get(0));
 			} else {
 				res.setDescription(doc.get("fts_description").toString());
 			}
 
-			// list = highlighting.get(doc.get("fts_id")).get("fts_name");
+			list = highlighting.get(doc.get("id")).get("fts_name");
 			if (null != list) {
 				res.setName(list.get(0));
 			} else {

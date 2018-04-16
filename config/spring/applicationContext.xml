@@ -21,7 +21,8 @@
 
 	<!-- 组件扫描 -->
 	<!-- 为了使用spring注解开发 -->
-	<context:component-scan base-package="src.net.bittreasury.fts"></context:component-scan>
+	<context:component-scan
+		base-package="src.net.bittreasury.fts"></context:component-scan>
 
 	<!-- 数据库连接池 -->
 	<bean name="dataSource"
@@ -48,12 +49,15 @@
 		<!-- 依赖属性 -->
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
 	<!-- 配置solr服务 -->
-	<bean class="org.apache.solr.client.solrj.impl.HttpSolrClient" id="httpSolrClient">
-		<constructor-arg  value="http://localhost:8080/solr/fts_core" ></constructor-arg>
+	<bean class="org.apache.solr.client.solrj.impl.HttpSolrClient"
+		id="httpSolrClient">
+		<constructor-arg
+			value="http://39.107.109.144:8080/solr/fts_core"></constructor-arg>
+		<!--<constructor-arg value="http://127.0.0.1:8080/solr/fts_core"></constructor-arg> -->
 	</bean>
-	
-	
-	
+
+
+
 </beans>

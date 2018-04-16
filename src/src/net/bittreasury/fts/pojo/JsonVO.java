@@ -1,6 +1,7 @@
 package src.net.bittreasury.fts.pojo;
 
 import src.net.bittreasury.fts.domain.FtsResource;
+import src.net.bittreasury.fts.domain.FtsUsers;
 
 public class JsonVO {
 	private String json;
@@ -11,7 +12,10 @@ public class JsonVO {
 	private Integer pageSize;
 	// 一共多少数据
 	private Integer sourceCount;
-
+	
+	//用于判断用户名是否合法
+	private FtsUsers ftsUsers;
+	
 	public FtsResource getFtsResource() {
 		return ftsResource;
 	}
@@ -50,5 +54,13 @@ public class JsonVO {
 
 	public void setJson(String json) {
 		this.json = json;
+	}
+
+	public FtsUsers getFtsUsers() {
+		return ftsUsers;
+	}
+
+	public void setFtsUsers(FtsUsers ftsUsers) {
+		this.ftsUsers = ftsUsers;
 	}
 }

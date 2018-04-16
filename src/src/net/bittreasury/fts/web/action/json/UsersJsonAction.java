@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.apache.xpath.internal.compiler.Keywords;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import net.sf.json.JSONArray;
@@ -50,17 +51,14 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 
 		Map<String, Object> map = new HashMap<>();
 		Boolean allow;
-		// FtsUsers ftsUsers =
-		// usersService.getUserByUserName(usersVo.getFtsUsers().getUserName());
-		FtsUsers ftsUsers = new FtsUsers();
+		FtsUsers ftsUsers = usersService.getUserByUserName(jsonVO.getFtsUsers().getUserName());
 		if (ftsUsers != null) {
-			allow = true;
-		} else {
 			allow = false;
+		} else {
+			allow = true;
 		}
-		map.put("judge", allow);
-		JSONObject jsonObject = JSONObject.fromObject(map);
-		String json = jsonObject.toString();
+		JSONArray jsonArray = JSONArray.fromObject(allow);
+		String json = jsonArray.toString();
 		jsonVO.setJson(json);
 		return "json";
 	}
@@ -72,22 +70,25 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 	 * @throws Exception
 	 */
 	public String searchJson() throws Exception {
-		FtsResource ftsResource = new FtsResource();
-		//ftsResource.setName("片");
-		
-		jsonVO.setFtsResource(ftsResource);
+
+		if (jsonVO.getFtsResource() == null) {
+			FtsResource ftsResource = new FtsResource();
+			jsonVO.setFtsResource(ftsResource);
+		}
+
 		ResultVO resource = searchService.getResource(jsonVO.getFtsResource(), null, jsonVO.getPageIndex());
 		List<FtsResource> list = resource.getList();
 		List<ResourceJson> list2 = new ArrayList<>();
 		for (FtsResource ftsource : list) {
 			list2.add(new ResourceJson(ftsource));
 		}
-//		JSONObject jsonObject = JSONObject.fromObject(list);
+		// JSONObject jsonObject = JSONObject.fromObject(list);
 		JSONArray jsonArray = JSONArray.fromObject(list2);
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
 
 	}
+
 	/**
 	 * 测试用的简单搜索
 	 * 
@@ -95,13 +96,13 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 	 * @throws Exception
 	 */
 	public String searchJsonE() throws Exception {
-		
+
 		List<FtsResource> list = searchService.searchEasy("片");
 		JSONArray jsonArray = JSONArray.fromObject(list);
-		//JSONObject jsonObject = JSONObject.fromObject(list);
+		// JSONObject jsonObject = JSONObject.fromObject(list);
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
-		
+
 	}
 
 	/**
@@ -127,6 +128,18 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 
 		JSONObject jsonObject = JSONObject.fromObject(map, jsonConfig);
 		jsonVO.setJson(jsonObject.toString());
+		return "json";
+	}
+
+	/**
+	 * 返回前100搜索热词，用于搜索的提示功能 返回格式为json 返回数据放到jsonVO中的json中即可
+	 * 
+	 * @return
+	 */
+	public String keywords() {
+		List<String> list = resourceService.fingResourceList();
+		JSONArray jsonArray = JSONArray.fromObject(list);
+		jsonVO.setJson(jsonArray.toString());
 		return "json";
 	}
 

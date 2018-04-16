@@ -38,20 +38,19 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 		StringBuilder hql = new StringBuilder("from FtsUsers");
 		hql.append(" where userName=? and password=? ");
 
-
 		List<FtsUsers> list = (List<FtsUsers>) this.getHibernateTemplate().find(hql.toString(), userName, password);
 
-		return (FtsUsers) ((list.size()>0) ? list.get(0) : null);
+		return (FtsUsers) ((list.size() > 0) ? list.get(0) : null);
 	}
 
 	@Override
 	public FtsUsers getUserByUserName(String userName) {
-		
+
 		StringBuilder hql = new StringBuilder("from FtsUsers");
 		hql.append(" where userName=? ");
 		List<FtsUsers> list = (List<FtsUsers>) this.getHibernateTemplate().find(hql.toString(), userName);
 
-		return (FtsUsers) ((list.size()>0) ? list.get(0) : null);
+		return (FtsUsers) ((list.size() > 0) ? list.get(0) : null);
 	}
 
 }

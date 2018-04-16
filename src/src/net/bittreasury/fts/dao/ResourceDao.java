@@ -10,5 +10,7 @@ public interface ResourceDao {
 	public Integer sourceCount(FtsResource ftsResource);
 
 	public FtsResource getResourceById(Integer id);
+	
+	public List<String> fingResourceList();
 
 }
