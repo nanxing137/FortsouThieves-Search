@@ -25,7 +25,7 @@
 			</result>
 
 			<result name="logIn">
-				/jsp/login.jsp
+				/jsp/search.jsp
 			</result>
 			<result name="error">
 				/jsp/error.jsp

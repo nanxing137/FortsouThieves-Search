@@ -23,7 +23,7 @@ public class HomeVO {
 	// 一页几个数据
 	private Integer pageSize;
 	// 一共多少数据
-	private Integer sourceCount;
+	private Long sourceCount;
 
 	public Integer getPageIndex() {
 		return pageIndex;
@@ -41,11 +41,11 @@ public class HomeVO {
 		this.pageSize = pageSize;
 	}
 
-	public Integer getSourceCount() {
+	public Long getSourceCount() {
 		return sourceCount;
 	}
 
-	public void setSourceCount(Integer sourceCount) {
+	public void setSourceCount(Long sourceCount) {
 		this.sourceCount = sourceCount;
 	}
 

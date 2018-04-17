@@ -22,7 +22,7 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public Integer sourceCount(FtsResource ftsResource) {
+	public Long sourceCount(FtsResource ftsResource) {
 
 		return resourceDao.sourceCount(ftsResource);
 	}

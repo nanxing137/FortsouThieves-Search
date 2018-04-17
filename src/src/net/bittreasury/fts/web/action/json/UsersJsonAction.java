@@ -58,8 +58,10 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		} else {
 			allow = true;
 		}
+		map.put("status", allow);
+		JSONObject jsonObject = JSONObject.fromObject(map);
 		JSONArray jsonArray = JSONArray.fromObject(allow);
-		String json = jsonArray.toString();
+		String json = jsonObject.toString();
 		jsonVO.setJson(json);
 		return "json";
 	}

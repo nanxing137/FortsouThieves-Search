@@ -36,6 +36,10 @@ public class HomeAction extends ActionSupport implements ModelDriven<HomeVO> {
 		return homeVO;
 	}
 
+	/**
+	 * 搜索返回纯静态
+	 * @return
+	 */
 	public String home() {
 		
 		//将资源数量返回前端
@@ -56,9 +60,9 @@ public class HomeAction extends ActionSupport implements ModelDriven<HomeVO> {
 		//返回给前端一个list，放在homeVO里
 		//叫ftsResources
 		homeVO.setSourceCount(resourceService.sourceCount(homeVO.getFtsResource()));
-		List<FtsResource> list = resourceService.findResourcePage(homeVO.getFtsResource(), homeVO.getPageIndex(),
-				homeVO.getPageSize());
-		homeVO.setFtsResources(list);
+//		List<FtsResource> list = resourceService.findResourcePage(homeVO.getFtsResource(), homeVO.getPageIndex(),
+//				homeVO.getPageSize());
+//		homeVO.setFtsResources(list);
 		return "list";
 	}
 	

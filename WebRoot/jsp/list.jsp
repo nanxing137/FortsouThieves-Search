@@ -139,12 +139,14 @@
     <script type="text/javascript">
         var searchName = "${ftsResource.name}";
         var pageNumber = 1;
+        var elementsNow;
 
         String.prototype.times = function (n) {
             return Array.prototype.join.call({ length: n + 1 }, this);
         };
 
         $(document).ready(function () {
+            $('#search').val(searchName);
 
             var dataSource = ['闪灵', '神偷奶爸', '头号玩家', '爆裂无声', '闪电侠', '一个头两个大', '玩具总动员'];
             $.post({
@@ -152,13 +154,14 @@
                 data: {},
                 success: function (result) {
                     dataSource = result;
+
+                    $('#search').typeahead({
+                        source: dataSource, // 数据源
+                        items: 5,            //最多显示个数
+                        minlength: 2
+                    });
                 },
                 dataType: 'json'
-            });
-            $('#search').typeahead({
-                source: dataSource, // 数据源
-                items: 5,            //最多显示个数
-                minlength: 2
             });
 
             var $grid = $('.grid').masonry({
@@ -184,13 +187,14 @@
         function getValue() {
             var elements = [];
             $.post({
-                url: '${pageContext.request.contextPath}/json/searchJson.action',
+                url: '/fts/json/searchJson.action',
                 data: {
                     "ftsResource.name": searchName,
-                    "pageNumber": pageNumber
+                    "pageIndex": pageNumber
                 },
                 success: function (result) {
-                    elements = result;
+                    elements = $.parseJSON(result);
+					console.log(elements);
                     pageNumber++;
                 },
                 dataType: 'json'

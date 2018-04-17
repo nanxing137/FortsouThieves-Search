@@ -20,14 +20,14 @@ public class ResourceDaoImpl extends HibernateDaoSupport implements ResourceDao 
 	}
 
 	@Override
-	public Integer sourceCount(FtsResource ftsResource) {
+	public Long sourceCount(FtsResource ftsResource) {
 
 		String name = "";
 		// 到时候可能加入条件查询
 		if (null != ftsResource && ftsResource.getName() != null) {
 			name = ftsResource.getName();
 		}
-		Integer count = (Integer) this.getHibernateTemplate()
+		Long count = (Long) this.getHibernateTemplate()
 				.find("select count(*) from FtsResource as ftsResource where name like ?", "%" + name + "%").iterator()
 				.next();
 

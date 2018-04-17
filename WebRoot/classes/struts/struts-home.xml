@@ -8,9 +8,9 @@
 		<!-- 当前使用spring和struts2整合方案 ，action由spring管理， class指定spring容 器中action的bean的id/name -->
 
 
-		<action name="/" class="homeAction" method="home">
+		<action name="search" class="homeAction" method="home">
 			<result name="home">
-				/jsp/home.jsp
+				/jsp/search.jsp
 			</result>
 		</action>
 		<action name="list" class="homeAction" method="list">
