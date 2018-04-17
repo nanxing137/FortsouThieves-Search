@@ -65,32 +65,35 @@
 
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h1>${ftsResource.ftsCategories.name}-${ftsResource.name}}</h1>
+            <h1>${ftsResource.ftsCategories.name}-${ftsResource.name}}
+              <span class="label label-success"><span class="glyphicon glyphicon-download"></span>  ${ftsResource.downloads}</span>
+              <span class="label label-info"><span class="glyphicon glyphicon-eye-open"></span>  ${ftsResource.pageViews}</span>
+            </h1>
             <button class="btn-warning btn-lg">
               <span class="glyphicon glyphicon-star"></span>
               <span>收藏</span>
             </button>
           </div>
           <div class="panel-content">
-            <img src="${ftsResource.imageURL}" alt="" class="img-responsive center-block">
+            <img src="${ftsResource.imageUrl}" alt="" class="img-responsive center-block">
           </div>
         </div>
 
         <div class="panel panel-primary">
           <div class="panel-heading pd-mi">
-            <h3>影片详情</h3>
+            <h2>影片详情</h2>
           </div>
           <div class="panel-content">
-            <p class="h4 mg-mi">${ftsResource.description}</p>
+            <p class="h3 mg-mi">${ftsResource.description}</p>
           </div>
         </div>
 
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3>资源下载</h3>
+            <h2>资源下载</h2>
           </div>
           <div class="panel-content pd-mi">
-            <p class="h4 mg-mi">${ftsResource.resourceURL}</p>
+            <p class="h3 mg-mi">${ftsResource.resourceUrl}</p>
           </div>
         </div>
 
