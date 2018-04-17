@@ -2,7 +2,7 @@
  * @Author: milkIQ 
  * @Date: 2018-04-04 00:12:20 
  * @Last Modified by: milkIQ
- * @Last Modified time: 2018-04-04 00:12:48
+ * @Last Modified time: 2018-04-17 15:51:27
  */
 
 function loginHidden() {
@@ -48,15 +48,15 @@ function eye() {
 }
 
 function success(data) {
-  // data = $.parseJSON(data);
-  if (data.status == 0) {
+  data = $.parseJSON(data);
+  if (data.status) {
     $('#inputRUsername').attr('data-content', '用户名可用')
     $('#inputRUsername').popover('show');
     setTimeout(function () {
       $('#inputRUsername').popover('hide');
     }, 1000);
     return true;
-  } else if (data.status == 1) {
+  } else {
     $('#inputRUsername').attr('data-content', '用户名重复，不能使用');
     $('#inputRUsername').popover('show');
     return false;
@@ -109,7 +109,6 @@ function emailRegexp() {
     email.popover('show');
     return false;
   }
-  return true;
 }
 
 function passwordRegexp() {
@@ -138,7 +137,7 @@ function passwordResRegexp() {
 function loginCheck() {
   var name = $('#inputUsername');
   var password = $('#inputPassword');
-  var form = $('#loginForm');
+  var form = $('loginForm');
   if (name.val().length == 0) {
     name.attr('data-content', '用户名未填写');
     name.popover('show');
@@ -156,13 +155,12 @@ function registerCheck() {
   window.registerStatus.password = passwordRegexp();
   window.registerStatus.passwordRes = passwordResRegexp();
   var username = $('#inputRUsername').val();
-  var status = true;
-//  var status = findUsername(
-//    'http://localhost:3000', {
-//      name: username
-//    },
-//    success
-//  );
+  var status = findUsername(
+    '/fts/json/judge.action', {
+      "ftsUsers.userName": username
+    },
+    success
+  );
   for (var i in window.registerStatus) {
     if (!window.registerStatus[i]) {
       status = false;
@@ -171,8 +169,7 @@ function registerCheck() {
   if (!status) {
     alert('输入有误，请检查后提交');
   } else {
-	  console.log('submit');
-    $('#registerForm').submit();
+    $('registerForm').submit();
   }
 }
 
@@ -196,15 +193,15 @@ $(function () {
 
   $('#inputRUsername').on('input', usernameRegexp);
 
-//  $('#inputRUsername').blur(function () {
-//    var username = $('#inputRUsername').val();
-//    findUsername(
-//      'http://localhost:3000', {
-//        name: username
-//      },
-//      success
-//    );
-//  });
+  $('#inputRUsername').blur(function () {
+    var username = $('#inputRUsername').val();
+    findUsername(
+      '/fts/json/judge.action', {
+        "ftsUsers.userName": username
+      },
+      success
+    );
+  });
   $('.rgForm').blur(function () {
     var name = $(this).attr('id');
     window.registerRule[name]();
