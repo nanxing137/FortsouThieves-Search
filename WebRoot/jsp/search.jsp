@@ -84,6 +84,7 @@
                 data:{},
                 success:function(result){
                     dataSource = $.parseJSON(result);
+                    
                     $('#search').typeahead({
                         source: dataSource, // 数据源
                         items: 5,            //最多显示个数

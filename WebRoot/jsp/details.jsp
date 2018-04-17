@@ -36,6 +36,11 @@
     .item {
       height: 300px;
     }
+
+    .onit {
+        pointer-events: auto;
+        cursor: pointer;
+    }
   </style>
 </head>
 
@@ -49,10 +54,10 @@
           <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" />
         </div>
         <div class=" col-lg-7 col-md-7 col-sm-12 col-xs-12 pad-mi">
-          <div class="form-group form-group-lg has-feedback">
-            <input type="text" class="form-control" id="search" placeholder="资源搜索，例如：闪灵" data-provide="typeahead" autocomplete="off">
-            <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
-          </div>
+            <form method="POST" action="/fts/home/list.action" class="form-group form-group-lg has-feedback">
+                <input type="text" class="form-control" name="ftsResource.name" id="search" placeholder="资源搜索，例如：闪灵" data-provide="typeahead" autocomplete="off">
+                <span class="onit glyphicon glyphicon-search form-control-feedback" aria-hidden="true" onclick="formSubmit();"></span>
+            </form>
         </div>
 
       </div>
