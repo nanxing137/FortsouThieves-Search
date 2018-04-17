@@ -41,6 +41,10 @@
         pointer-events: auto;
         cursor: pointer;
     }
+
+    .pointer {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -50,8 +54,8 @@
     <div class="container-fluid">
       <div class="row pad-mi">
 
-        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1" onclick="window.location.href='/fts/home/search.action'">
-          <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" />
+        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1 pointer" onclick="window.location.href='/fts/home/search.action'">
+          <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" alt="四十大盗搜索" />
         </div>
         <div class=" col-lg-7 col-md-7 col-sm-12 col-xs-12 pad-mi">
             <form method="POST" action="/fts/home/list.action" class="form-group form-group-lg has-feedback">
