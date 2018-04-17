@@ -174,18 +174,17 @@
                 $grid.masonry('layout');
             });
 
-            loadData(getItems());
+            getValue();
 
             $(window).on('scroll', function () {
                 if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
-                    loadData(getItems());
+                    getValue();
                 }
             });
 
         });
 
         function getValue() {
-            var elements = [];
             $.post({
                 url: '/fts/json/searchJson.action',
                 data: {
@@ -193,17 +192,16 @@
                     "pageIndex": pageNumber
                 },
                 success: function (result) {
-                    elements = $.parseJSON(result);
-					console.log(elements);
+                    var elements = $.parseJSON(result);
+                    getItems(elements);
                     pageNumber++;
                 },
                 dataType: 'json'
             });
-            return elements;
         }
 
-        function getItems() {
-            var elements = getValue();
+        function getItems(ele) {
+            var elements = ele;
             var allHTML = [];
             for(let i in elements) {
                 allHTML[i] = '<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 grid-item" onclick="window.location.href=' +
@@ -216,7 +214,7 @@
                 elements[i].description +
                 '</p></div></div></div>';
             }
-            return allHTML;
+            loadData(allHTML);
         }
 
         function loadData(data) {
