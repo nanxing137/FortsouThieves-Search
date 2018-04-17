@@ -63,7 +63,7 @@
         <!-- <div class=""> -->
         <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive center-block pad-mi bottom-pad-ma" />
         <!-- </div> -->
-        <form class="form-group form-group-lg has-feedback top-mi" method="POST" action="/fts/home/list.action">
+        <form class="form-group form-group-lg has-feedback top-mi" method="POST" action="/home/list.action">
           <input type="text" class="form-control" name="ftsResource.name" id="search" placeholder="资源搜索，例如：闪灵" data-provide="typeahead"
             autocomplete="off">
           <span class="onit glyphicon glyphicon-search form-control-feedback" aria-hidden="true" onclick="formSubmit();"></span>
@@ -81,7 +81,7 @@
     var dataSource = ['闪灵', '神偷奶爸', '头号玩家', '爆裂无声', '闪电侠', '一个头两个大', '玩具总动员'];
     $(document).ready(function () {
       $.post({
-        url: '/fts/json/keywords.action',
+        url: '/json/keywords.action',
         data: {},
         success: function (result) {
           dataSource = $.parseJSON(result);

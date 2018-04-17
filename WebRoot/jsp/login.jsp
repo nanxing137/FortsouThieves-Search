@@ -64,7 +64,7 @@
       </div>
 
       <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 panel panel-default top-ma" id="login">
-        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="loginForm" autocomplete="off" action="/fts/users/logIn.action">
+        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="loginForm" autocomplete="off" action="/users/logIn.action">
           <div class="form-group form-group-lg">
             <label class="control-label" for="inputUsername">用户名</label>
             <input type="text" class="form-control" id="inputUsername" name="ftsUsers.userName" data-toggle="popover" data-container="body" data-placement="right">
@@ -83,7 +83,7 @@
       </div>
 
       <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 panel panel-default top-ma" id="register">
-        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="registerForm" autocomplete="off" action="/fts/users/submitUsers.action">
+        <form method="post" class="form-horizontal col-md-10 col-md-offset-1 top-mi" id="registerForm" autocomplete="off" action="/users/submitUsers.action">
           <div class="form-group form-group-lg">
             <label class="control-label" for="inputRUsername">用户名</label>
             <input type="text" class="form-control rgForm" id="inputRUsername" name="ftsUsers.userName" data-toggle="popover" data-container="body" data-placement="right">
