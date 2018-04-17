@@ -2,7 +2,7 @@
  * @Author: milkIQ 
  * @Date: 2018-04-04 00:12:20 
  * @Last Modified by: milkIQ
- * @Last Modified time: 2018-04-17 15:51:27
+ * @Last Modified time: 2018-04-17 17:51:14
  */
 
 function loginHidden() {
@@ -26,9 +26,10 @@ function registerHidden() {
 }
 
 function eye() {
+  var i;
   var icon = $('.glyphicon-eye-open').length > $('.glyphicon-eye-close').length ? $('.glyphicon-eye-open') : $('.glyphicon-eye-close');
   if (icon.hasClass('glyphicon-eye-open')) {
-    for (var i = 0; i < icon.length; i++) {
+    for (i = 0; i < icon.length; i++) {
       $(icon[i]).addClass('glyphicon-eye-close');
       $(icon[i]).removeClass('glyphicon-eye-open');
     }
@@ -36,7 +37,7 @@ function eye() {
     $('#inputResPassword').attr('type', 'password');
     $('#inputPassword').attr('type', 'password');
   } else if (icon.hasClass('glyphicon-eye-close')) {
-    for (var i = 0; i < icon.length; i++) {
+    for (i = 0; i < icon.length; i++) {
       $(icon[i]).addClass('glyphicon-eye-open');
       $(icon[i]).removeClass('glyphicon-eye-close');
     }
@@ -50,7 +51,7 @@ function eye() {
 function success(data) {
   data = $.parseJSON(data);
   if (data.status) {
-    $('#inputRUsername').attr('data-content', '用户名可用')
+    $('#inputRUsername').attr('data-content', '用户名可用');
     $('#inputRUsername').popover('show');
     setTimeout(function () {
       $('#inputRUsername').popover('hide');
