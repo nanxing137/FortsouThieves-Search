@@ -2,7 +2,7 @@
  * @Author: milkIQ 
  * @Date: 2018-04-04 00:12:20 
  * @Last Modified by: milkIQ
- * @Last Modified time: 2018-04-17 18:03:24
+ * @Last Modified time: 2018-04-17 21:41:40
  */
 
 function loginHidden() {
@@ -157,7 +157,7 @@ function registerCheck() {
   window.registerStatus.passwordRes = passwordResRegexp();
   var username = $('#inputRUsername').val();
   var status = findUsername(
-    '/fts/json/judge.action', {
+    '/json/judge.action', {
       "ftsUsers.userName": username
     },
     success
@@ -197,7 +197,7 @@ $(function () {
   $('#inputRUsername').blur(function () {
     var username = $('#inputRUsername').val();
     findUsername(
-      '/fts/json/judge.action', {
+      '/json/judge.action', {
         "ftsUsers.userName": username
       },
       success

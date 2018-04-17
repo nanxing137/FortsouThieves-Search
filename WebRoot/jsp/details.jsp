@@ -54,11 +54,11 @@
     <div class="container-fluid">
       <div class="row pad-mi">
 
-        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1 pointer" onclick="window.location.href='/fts/home/search.action'">
+        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1 pointer" onclick="window.location.href='/home/search.action'">
           <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" alt="四十大盗搜索" />
         </div>
         <div class=" col-lg-7 col-md-7 col-sm-12 col-xs-12 pad-mi">
-            <form method="POST" action="/fts/home/list.action" class="form-group form-group-lg has-feedback">
+            <form method="POST" action="/home/list.action" class="form-group form-group-lg has-feedback">
                 <input type="text" class="form-control" name="ftsResource.name" id="search" placeholder="资源搜索，例如：闪灵" data-provide="typeahead" autocomplete="off">
                 <span class="onit glyphicon glyphicon-search form-control-feedback" aria-hidden="true" onclick="formSubmit();"></span>
             </form>
@@ -159,7 +159,7 @@
     $(document).ready(function() {
       var dataSource = ['闪灵', '神偷奶爸', '头号玩家', '爆裂无声', '闪电侠', '一个头两个大', '玩具总动员'];
       $.post({
-        url: '/fts/json/keywords.action',
+        url: '/json/keywords.action',
         data: {},
         success: function(result) {
           dataSource = result;
