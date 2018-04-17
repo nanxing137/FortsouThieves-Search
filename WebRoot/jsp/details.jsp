@@ -29,10 +29,6 @@
       padding: 10px 0 10px 0;
     }
 
-    .mg-mi {
-      /* margin: 20px; */
-    }
-
     .pd-mi {
       padding: 20px;
     }
