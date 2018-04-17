@@ -55,7 +55,7 @@
         <div class="container-fluid">
             <div class="row pad-mi">
 
-                <div class="visible-lg-block visible-md-block col-lg-1 col-md-1">
+                <div class="visible-lg-block visible-md-block col-lg-1 col-md-1" onclick="window.location.href='/fts/home/search.action'">
                     <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" />
                 </div>
                 <div class=" col-lg-7 col-md-7 col-sm-12 col-xs-12 pad-mi">

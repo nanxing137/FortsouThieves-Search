@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Search</title>
+  <title>${ftsResource.ftsCategories.name}-${ftsResource.name}</title>
 
   <!-- Bootstrap -->
   <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
@@ -50,7 +50,7 @@
     <div class="container-fluid">
       <div class="row pad-mi">
 
-        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1">
+        <div class="visible-lg-block visible-md-block col-lg-1 col-md-1" onclick="window.location.href='/fts/home/search.action'">
           <img src="${pageContext.request.contextPath}/img/search.png" class="img-responsive" />
         </div>
         <div class=" col-lg-7 col-md-7 col-sm-12 col-xs-12 pad-mi">
@@ -70,10 +70,10 @@
 
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h1>${ftsResource.ftsCategories.name}-${ftsResource.name}}
+            <h2>${ftsResource.ftsCategories.name}-${ftsResource.name}
               <span class="label label-success"><span class="glyphicon glyphicon-download"></span>  ${ftsResource.downloads}</span>
               <span class="label label-info"><span class="glyphicon glyphicon-eye-open"></span>  ${ftsResource.pageViews}</span>
-            </h1>
+            </h2>
             <button class="btn-warning btn-lg">
               <span class="glyphicon glyphicon-star"></span>
               <span>收藏</span>
@@ -89,7 +89,7 @@
             <h2>影片详情</h2>
           </div>
           <div class="panel-content">
-            <p class="h3 mg-mi">${ftsResource.description}</p>
+            <div class="h3 mg-mi" style="display: inline;">${ftsResource.description}</div>
           </div>
         </div>
 
