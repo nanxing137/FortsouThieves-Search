@@ -32,48 +32,51 @@ public class HomeAction extends ActionSupport implements ModelDriven<HomeVO> {
 	// 由ModelDriven拦截器调用，此方法在aciton被实例化后调用，获取一个模型对象
 	@Override
 	public HomeVO getModel() {
-		// TODO Auto-generated method stub
 		return homeVO;
 	}
 
 	/**
 	 * 搜索返回纯静态
+	 * 
 	 * @return
 	 */
 	public String home() {
-		
-		//将资源数量返回前端
+
+		// 将资源数量返回前端
 		homeVO.setSourceCount(resourceService.sourceCount(homeVO.getFtsResource()));
 
 		return "home";
 	}
+
 	/**
-	 * 搜索列表
-	 * 只返回纯静态页面
-	 * 数据通过json异步加载s
+	 * 搜索列表 只返回纯静态页面 数据通过json异步加载s
+	 * 
 	 * @return
 	 */
 	public String list() {
-		//通过查询条件
-		//第几页，每页几条
-		//加上高级搜索条件（未作）
-		//返回给前端一个list，放在homeVO里
-		//叫ftsResources
+		// 通过查询条件
+		// 第几页，每页几条
+		// 加上高级搜索条件（未作）
+		// 返回给前端一个list，放在homeVO里
+		// 叫ftsResources
 		homeVO.setSourceCount(resourceService.sourceCount(homeVO.getFtsResource()));
-//		List<FtsResource> list = resourceService.findResourcePage(homeVO.getFtsResource(), homeVO.getPageIndex(),
-//				homeVO.getPageSize());
-//		homeVO.setFtsResources(list);
+		// List<FtsResource> list =
+		// resourceService.findResourcePage(homeVO.getFtsResource(),
+		// homeVO.getPageIndex(),
+		// homeVO.getPageSize());
+		// homeVO.setFtsResources(list);
 		return "list";
 	}
-	
+
 	/**
 	 * 资源详情页
+	 * 
 	 * @return
 	 */
 	public String details() {
-		//通过具体资源ID
-		//具体查询某个资源
-		//存到homeVO.ftsResource里
+		// 通过具体资源ID
+		// 具体查询某个资源
+		// 存到homeVO.ftsResource里
 		FtsResource ftsResource = resourceService.getResourceById(homeVO.getFtsResource().getId());
 		homeVO.setFtsResource(ftsResource);
 		return "details";
