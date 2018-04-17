@@ -205,7 +205,7 @@
             var allHTML = [];
             for(let i in elements) {
                 allHTML[i] = '<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 grid-item" onclick="window.location.href=' +
-                "'/fts/home/detail.action?id="+ elements[i].id +"'" +
+                "'/fts/home/details.action?ftsResource.id="+ elements[i].id +"'" +
                 '"><div class="thumbnail"><img src="' +
                 elements[i].imageUrl +
                 '" class="visible-lg-block visible-md-block" alt="test"><div class="caption"><h3>' +

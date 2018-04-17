@@ -65,25 +65,14 @@
 
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h1>天才枪手-高清资源/中文字幕/720p/1080p</h1>
+            <h1>${ftsResource.ftsCategories.name}-${ftsResource.name}}</h1>
             <button class="btn-warning btn-lg">
               <span class="glyphicon glyphicon-star"></span>
               <span>收藏</span>
             </button>
           </div>
           <div class="panel-content">
-            <img src="${pageContext.request.contextPath}/img/404.png" alt="" class="img-responsive center-block">
-          </div>
-        </div>
-
-        <div class="panel panel-primary">
-          <div class="panel-heading pd-mi">
-            <h3>影片名：天才枪手</h3>
-          </div>
-          <div class="panel-content">
-            <p class="h4 mg-mi">豆瓣评分：8.3<br> 导演: 纳塔吾·彭皮里亚<br> 编剧: 塔妮达·汉塔维瓦塔娜 / 瓦苏红·皮娅罗姆娜 / 纳塔吾·彭皮里亚<br> 主演: 茱蒂蒙·琼查容苏因 / 查侬·散顶腾古 / 依莎亚·贺苏汪 / 披纳若·苏潘平佑 / 塔内·瓦拉库努娄 / 莎琳雷特·托马斯 / 伊戈·米基塔斯 / 帕辛·宽萨塔彭 / 萨哈贾克·波斯安吉特 / 坎嘉娜·维耐潘尼 / 育塔彭·瓦拉努科洛楚 / 诺帕瓦特·里基特王<br> 类型: 剧情 / 悬疑 / 犯罪<br> 制片国家/地区:
-              泰国
-              <br> 语言: 泰语 / 英语<br> 上映日期: 2017-10-13(中国大陆) / 2017-05-03(泰国)<br> 片长: 130分钟<br> 又名: 模犯生(台) / 出猫特攻队(港) / 完美作弊 / 高智商的作弊游戏 / 坏天才 / Bad Genius<br> IMDb链接: <a href="http://www.imdb.com/title/tt6788942" rel="noopener" target="_blank">tt6788942</a></p>
+            <img src="${ftsResource.imageURL}" alt="" class="img-responsive center-block">
           </div>
         </div>
 
@@ -92,7 +81,7 @@
             <h3>影片详情</h3>
           </div>
           <div class="panel-content">
-            <p class="h4 mg-mi">影片根据2014年轰动一时的亚洲考场作弊案改编，讲述了天才学霸利用高智商考场作弊牟取暴利的故事。出生平凡的天才少女Lynn（茱蒂蒙·琼查容苏因 饰）在进入贵族学校后，结识了富二代同学Grace（依莎亚·贺苏汪饰）与Pat（披纳若·苏潘平佑饰），从此开始了考场作弊生涯，与此同时，另一名记忆力极佳的天才学霸Bank（查侬·散顶腾古 饰）发现了Lynn不为人知的“交易”。经过多场险象环生的“作弊战争”后，Lynn接下最后一单在国际考场上为富家子弟作弊的天价委托。一场横跨两大洲的完美作弊方案横空出世，然而一切并不像他们想的那么简单……</p>
+            <p class="h4 mg-mi">${ftsResource.description}</p>
           </div>
         </div>
 
@@ -101,11 +90,7 @@
             <h3>资源下载</h3>
           </div>
           <div class="panel-content pd-mi">
-            <ul>
-              <li>
-                <a class="h4 text-primary mg-mi" href="http://img.hdwan.net/2017/10/天才枪手【1080P-.1.36GB】【中文字幕】.torrent">天才枪手【1080P-.1.36GB】【中文字幕】</a>
-              </li>
-            </ul>
+            <p class="h4 mg-mi">${ftsResource.resourceURL}</p>
           </div>
         </div>
 
@@ -166,13 +151,13 @@
         data: {},
         success: function(result) {
           dataSource = result;
+          $('#search').typeahead({
+            source: dataSource, // 数据源
+            items: 5, //最多显示个数
+            minlength: 2
+          });
         },
         dataType: 'json'
-      });
-      $('#search').typeahead({
-        source: dataSource, // 数据源
-        items: 5, //最多显示个数
-        minlength: 2
       });
     });
   </script>
