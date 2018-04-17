@@ -24,7 +24,7 @@ public class ResourceDaoImpl extends HibernateDaoSupport implements ResourceDao 
 
 		String name = "";
 		// 到时候可能加入条件查询
-		if (ftsResource.getName() != null) {
+		if (null != ftsResource && ftsResource.getName() != null) {
 			name = ftsResource.getName();
 		}
 		Integer count = (Integer) this.getHibernateTemplate()
@@ -71,11 +71,11 @@ public class ResourceDaoImpl extends HibernateDaoSupport implements ResourceDao 
 	@Override
 	public List<String> fingResourceList() {
 		List<FtsResource> list = (List<FtsResource>) this.getHibernateTemplate().find("from FtsResource");
-		List<String> result =new ArrayList<>();
+		List<String> result = new ArrayList<>();
 		for (FtsResource ftsResource : list) {
 			result.add(ftsResource.getName());
 		}
-		
+
 		return result;
 	}
 

@@ -16,8 +16,8 @@ public class ResourceJson {
 
 	public ResourceJson(FtsResource ftsResource) {
 		this.id = ftsResource.getId();
-//		this.categoriesName = ftsResource.getFtsCategories().getName();
-		this.categoriesName = "栏目现在有问题!!!";
+		this.categoriesName = ftsResource.getFtsCategories().getName();
+	//	this.categoriesName = "栏目现在有问题!!!";
 		this.name = ftsResource.getName();
 		this.description = ftsResource.getDescription();
 		this.imageUrl = ftsResource.getImageUrl();

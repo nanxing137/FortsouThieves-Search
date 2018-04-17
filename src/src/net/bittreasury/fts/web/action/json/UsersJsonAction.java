@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.sun.org.apache.xpath.internal.compiler.Keywords;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.alibaba.fastjson.JSON;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -82,8 +83,11 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		for (FtsResource ftsource : list) {
 			list2.add(new ResourceJson(ftsource));
 		}
+//		String temp = JSON.toJSONString(list2);
+//		System.out.println(temp);
 		// JSONObject jsonObject = JSONObject.fromObject(list);
 		JSONArray jsonArray = JSONArray.fromObject(list2);
+//		System.out.println(jsonArray.toString());
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
 
