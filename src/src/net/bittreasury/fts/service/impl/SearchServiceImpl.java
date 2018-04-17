@@ -139,4 +139,50 @@ public class SearchServiceImpl implements SearchService {
 		return resultVO;
 	}
 
+	@Override
+	public Long sourceCount(FtsResource ftsResource, Integer sort, Integer page) throws Exception {
+		// 创建solrQuery
+		SolrQuery solrQuery = new SolrQuery();
+		// 输入关键字
+
+		if (null != ftsResource && StringUtils.isNotEmpty(ftsResource.getName())) {
+			solrQuery.setQuery("fts_name:" + ftsResource.getName() + " OR fts_description:" + ftsResource.getName());
+		} else {
+			solrQuery.setQuery("*:*");
+		}
+		// 设置栏目过滤
+		if (null != ftsResource && null != ftsResource.getFtsCategories()) {
+			if (StringUtils.isNotEmpty(ftsResource.getFtsCategories().getName())) {
+				solrQuery.addFilterQuery("fts_category:" + ftsResource.getFtsCategories().getName());
+			}
+		}
+		// 设置排序
+		if (null != sort) {
+			// 如有需求，则按下载量排行
+			// 暂时闲置
+			solrQuery.setSort("fts_downloads", ORDER.desc);
+		}
+		// 设置分页信息
+		if (page == null) {
+			page = 1;
+		}
+		Integer pageSize = 10;
+		solrQuery.setStart((page - 1) * pageSize);
+		solrQuery.setRows(pageSize);
+
+		// 设置高亮信息
+		solrQuery.setHighlight(true);
+		solrQuery.addHighlightField("fts_description");
+		solrQuery.addHighlightField("fts_name");
+		solrQuery.setHighlightSimplePre("<span class=\"text-danger\">");
+		solrQuery.setHighlightSimplePost("</span>");
+
+		QueryResponse response = client.query(solrQuery);
+		// 查询出的结果
+		SolrDocumentList results = response.getResults();
+		Long count = results.getNumFound();
+
+		return results.getNumFound();
+	}
+
 }

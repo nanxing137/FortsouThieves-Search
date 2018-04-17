@@ -85,11 +85,11 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		for (FtsResource ftsource : list) {
 			list2.add(new ResourceJson(ftsource));
 		}
-//		String temp = JSON.toJSONString(list2);
-//		System.out.println(temp);
+		// String temp = JSON.toJSONString(list2);
+		// System.out.println(temp);
 		// JSONObject jsonObject = JSONObject.fromObject(list);
 		JSONArray jsonArray = JSONArray.fromObject(list2);
-//		System.out.println(jsonArray.toString());
+		// System.out.println(jsonArray.toString());
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
 
@@ -109,32 +109,6 @@ public class UsersJsonAction extends ActionSupport implements ModelDriven<JsonVO
 		jsonVO.setJson(jsonArray.toString());
 		return "json";
 
-	}
-
-	/**
-	 * 普通搜索 暂时不用了
-	 * 
-	 * @return
-	 */
-	public String list() {
-		List<FtsResource> list = resourceService.findResourcePage(jsonVO.getFtsResource(), jsonVO.getPageIndex(),
-				jsonVO.getPageSize());
-		List<ResourceJson> jsonList = new LinkedList<>();
-		for (FtsResource ftsresource : list) {
-			jsonList.add(new ResourceJson(ftsresource));
-		}
-
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", jsonList);
-
-		JsonConfig jsonConfig = new JsonConfig();
-
-		// jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
-		// jsonConfig.setExcludes(new String[] { "ftsCategories" });
-
-		JSONObject jsonObject = JSONObject.fromObject(map, jsonConfig);
-		jsonVO.setJson(jsonObject.toString());
-		return "json";
 	}
 
 	/**

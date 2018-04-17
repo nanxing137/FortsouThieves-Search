@@ -16,18 +16,6 @@ public class ResourceServiceImpl implements ResourceService {
 	private ResourceDao resourceDao;
 
 	@Override
-	public List<FtsResource> findResourcePage(FtsResource ftsResource, Integer pageIndex, Integer pageSize) {
-
-		return resourceDao.findResourcePage(ftsResource, pageIndex, pageSize);
-	}
-
-	@Override
-	public Long sourceCount(FtsResource ftsResource) {
-
-		return resourceDao.sourceCount(ftsResource);
-	}
-
-	@Override
 	public FtsResource getResourceById(Integer id) {
 		return resourceDao.getResourceById(id);
 	}

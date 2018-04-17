@@ -22,4 +22,6 @@ public interface SearchService {
 	public ResultVO getResource(FtsResource ftsResource, Integer sort, Integer page) throws Exception;
 	
 	public List<FtsResource> searchEasy(String key) throws SolrServerException, IOException;
+
+	public Long sourceCount(FtsResource ftsResource, Integer sort, Integer page) throws Exception;
 }
